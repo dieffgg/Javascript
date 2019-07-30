@@ -9,7 +9,24 @@ var weight = tdWeight.textContent;
 var tdHeight = patient.querySelector(".info-altura");
 var height = tdHeight.textContent;
 
-var imc = weight / (height * height);
-
 var tdImc = patient.querySelector(".info-imc");
-tdImc.textContent = imc;
+
+var validWeight = true;
+var validHeight = true;
+
+if(weight <= 0 || weight >= 500){
+    console.log("Peso Inválido");
+    validWeight = false;
+    tdImc.textContent = "Peso inválido";
+}
+if(height >= 4.00 || height <= 1.00){
+    console.log("Altura Inválida");
+    validHeight = false;
+    tdImc.textContent = "Altura inválida";
+}
+
+if (validHeight && validWeight){
+    var imc = weight / (height * height);
+    tdImc.textContent = imc;
+}
+

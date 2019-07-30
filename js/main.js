@@ -1,7 +1,8 @@
 var titulo = document.querySelector("h1");
 titulo.textContent = "Aparecida Nutricionista";
 
-var patient = document.querySelector("#first-patient");
+var patient = document.querySelectorAll(".patient");
+console.log(patient);
 
 var tdWeight =  patient.querySelector(".info-peso");
 var weight = tdWeight.textContent;

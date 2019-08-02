@@ -36,5 +36,12 @@ for (var i = 0; i < patients.length; i++){
         
     }
 
+titulo.addEventListener("click", showMessage);
+
+function showMessage(){
+    console.log("Olá fui clicado!!!");
+    
+}
+
 
 

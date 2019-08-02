@@ -20,12 +20,13 @@ for (var i = 0; i < patients.length; i++){
             console.log("Peso Inválido");
             validWeight = false;
             tdImc.textContent = "Peso inválido";
-            patient.style.backgroundColor = "red";
+            patient.classList.add("patient__invalid")
         }
         if(height >= 4.00 || height <= 1.00){
             console.log("Altura Inválida");
             validHeight = false;
             tdImc.textContent = "Altura inválida";
+            patient.style.backgroundColor = "red";
         }
 
         if (validHeight && validWeight){

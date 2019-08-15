@@ -1,5 +1,5 @@
 var titulo = document.querySelector("h1");
-titulo.textContent = "Aparecida Nutricionista";
+titulo.textContent = "Gabriela Nutricionista";
 
 var patients = document.querySelectorAll(".patient");
 for (var i = 0; i < patients.length; i++){
@@ -36,12 +36,12 @@ for (var i = 0; i < patients.length; i++){
         
     }
 
-titulo.addEventListener("click", showMessage);
+var buttonAdd = document.querySelector("#adicionar-paciente");
 
-function showMessage(){
-    console.log("Olá fui clicado!!!");
-    
+buttonAdd.addEventListener("click", insertButton);
+
+function insertButton(event){
+    event.preventDefault();
+    console.log("Oi cliquei no botao!!");
+   
 }
-
-
-

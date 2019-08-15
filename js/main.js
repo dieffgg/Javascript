@@ -51,7 +51,6 @@ function insertButton(event){
     var fat = form.gordura.value;
 
     var patientTr = document.createElement("tr");
-
     var nameTd = document.createElement("td");
     var weightTd = document.createElement("td");
     var heightTd = document.createElement("td");
@@ -69,5 +68,7 @@ function insertButton(event){
     patientTr.appendChild(heightTd);
     patientTr.appendChild(fatTd);
 
-    console.log(patientTr)
+    var table = document.querySelector("#patient__table");
+
+    table.appendChild(patientTr);
 }

@@ -42,6 +42,17 @@ buttonAdd.addEventListener("click", insertButton);
 
 function insertButton(event){
     event.preventDefault();
-    console.log("Oi cliquei no botao!!");
+
+    var form = document.querySelector("#form__add")
+
+    var name = form.nome.value;
+    var height = form.altura.value;
+    var weight = form.peso.value;
+    var fat = form.gordura.value;
+
+    console.log(name);
+    console.log(height);
+    console.log(weight);
+    console.log(fat);
    
 }

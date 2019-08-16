@@ -1,5 +1,4 @@
 var buttonAdd = document.querySelector("#adicionar-paciente");
-
 buttonAdd.addEventListener("click", insertButton);
 
 function insertButton(event){
@@ -24,12 +23,14 @@ function insertButton(event){
     weightTd.textContent = weight;
     heightTd.textContent = height;
     fatTd.textContent = fat;
+    imcTd.textContent = calculateImc(weight,height);
     
     patientTr.appendChild(nameTd);
     patientTr.appendChild(nameTd);
     patientTr.appendChild(weightTd);
     patientTr.appendChild(heightTd);
     patientTr.appendChild(fatTd);
+    patientTr.appendChild(imcTd);
 
     var table = document.querySelector("#patient__table");
 

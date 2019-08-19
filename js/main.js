@@ -3,7 +3,7 @@ titulo.textContent = "Gabriela Nutricionista";
 
 var patients = document.querySelectorAll(".patient");
 for (var i = 0; i < patients.length; i++){
-        var patient = patients[i]
+        var patient = patients[i];
 
         var tdWeight =  patient.querySelector(".info-peso");
         var weight = tdWeight.textContent;
@@ -42,5 +42,4 @@ function calculateImc(weight,height){
     imc = weight / (height*height);
 
     return imc.toFixed(2);
-
 }

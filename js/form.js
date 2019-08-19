@@ -4,13 +4,13 @@ buttonAdd.addEventListener("click", insertButton);
 function insertButton(event){
     event.preventDefault();
 
-    var form = document.querySelector("#form__add")
+    var form = document.querySelector("#form__add");
+    //Extraindo informações do paciente do form
+    var returnPatient = extractingForm(form);
+    console.log(returnPatient);
+    
 
-    var name = form.nome.value;
-    var weight = form.peso.value;
-    var height = form.altura.value;
-    var fat = form.gordura.value;
-
+    //Cria a Tr and Td do paciente
     var patientTr = document.createElement("tr");
 
     var nameTd = document.createElement("td");
@@ -19,11 +19,11 @@ function insertButton(event){
     var fatTd = document.createElement("td");
     var imcTd = document.createElement("td");
 
-    nameTd.textContent = name;
-    weightTd.textContent = weight;
-    heightTd.textContent = height;
-    fatTd.textContent = fat;
-    imcTd.textContent = calculateImc(weight,height);
+    nameTd.textContent = returnPatient.name;
+    weightTd.textContent = returnPatient.weight;
+    heightTd.textContent = returnPatient.height;
+    fatTd.textContent = returnPatient.fat;
+    imcTd.textContent = returnPatient.imc;
     
     patientTr.appendChild(nameTd);
     patientTr.appendChild(nameTd);
@@ -32,7 +32,19 @@ function insertButton(event){
     patientTr.appendChild(fatTd);
     patientTr.appendChild(imcTd);
 
+    //Adicionando o Paciente na tabela
     var table = document.querySelector("#patient__table");
 
     table.appendChild(patientTr);
+}
+    //Extraindo informações do paciente do form e criando um objeto 
+function extractingForm(form){
+    var patient = {
+        name : form.nome.value,
+        weight : form.peso.value,
+        height : form.altura.value,
+        fat : form.gordura.value,
+        imc : calculateImc(form.peso.value, form.altura.value)
+    }
+    return patient;
 }

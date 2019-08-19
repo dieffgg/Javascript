@@ -5,39 +5,17 @@ function insertButton(event){
     event.preventDefault();
 
     var form = document.querySelector("#form__add");
-    //Extraindo informações do paciente do form
     var returnPatient = extractingForm(form);
-    console.log(returnPatient);
+
+    var patientTr = mountingTr(returnPatient);
     
-
-    //Cria a Tr and Td do paciente
-    var patientTr = document.createElement("tr");
-
-    var nameTd = document.createElement("td");
-    var weightTd = document.createElement("td");
-    var heightTd = document.createElement("td");
-    var fatTd = document.createElement("td");
-    var imcTd = document.createElement("td");
-
-    nameTd.textContent = returnPatient.name;
-    weightTd.textContent = returnPatient.weight;
-    heightTd.textContent = returnPatient.height;
-    fatTd.textContent = returnPatient.fat;
-    imcTd.textContent = returnPatient.imc;
-    
-    patientTr.appendChild(nameTd);
-    patientTr.appendChild(nameTd);
-    patientTr.appendChild(weightTd);
-    patientTr.appendChild(heightTd);
-    patientTr.appendChild(fatTd);
-    patientTr.appendChild(imcTd);
-
     //Adicionando o Paciente na tabela
     var table = document.querySelector("#patient__table");
-
     table.appendChild(patientTr);
+
+    form.reset();
 }
-    //Extraindo informações do paciente do form e criando um objeto 
+//Extraindo informações do paciente do form e criando um objeto 
 function extractingForm(form){
     var patient = {
         name : form.nome.value,
@@ -47,4 +25,25 @@ function extractingForm(form){
         imc : calculateImc(form.peso.value, form.altura.value)
     }
     return patient;
+}
+//função que cria a tr e monta a td através do appendchild
+function mountingTr(returnPatient){
+    var patientTr = document.createElement("tr");
+    patientTr.classList.add("patient");
+    
+    patientTr.appendChild(mountingTd(returnPatient.name,"info-nome"));
+    patientTr.appendChild(mountingTd(returnPatient.weight,"info-peso"));
+    patientTr.appendChild(mountingTd(returnPatient.height,"info-altura"));
+    patientTr.appendChild(mountingTd(returnPatient.fat,"info-gordura"));
+    patientTr.appendChild(mountingTd(returnPatient.imc,"info-imc"));
+
+    return patientTr;
+}
+//função que cria o elemento td inclui o dado e classe e retorna a td
+function mountingTd(dado,classe){
+    var td = document.createElement("td");
+    td.textContent = dado; 
+    td.classList.add(classe);
+
+    return td;
 }

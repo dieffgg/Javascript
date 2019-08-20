@@ -5,10 +5,17 @@ function insertButton(event){
     event.preventDefault();
 
     var form = document.querySelector("#form__add");
-    var returnPatient = extractingForm(form);
+    var patient = extractingForm(form);
 
-    var patientTr = mountingTr(returnPatient);
-    
+    var patientTr = mountingTr(patient);
+
+    var error = validPatient(patient);
+
+    if (error.length > 0){
+        var messageError = document.querySelector("#message__error");
+        messageError.textContent = error;
+        return;
+    }
     //Adicionando o Paciente na tabela
     var table = document.querySelector("#patient__table");
     table.appendChild(patientTr);
@@ -27,15 +34,15 @@ function extractingForm(form){
     return patient;
 }
 //função que cria a tr e monta a td através do appendchild
-function mountingTr(returnPatient){
+function mountingTr(patient){
     var patientTr = document.createElement("tr");
     patientTr.classList.add("patient");
     
-    patientTr.appendChild(mountingTd(returnPatient.name,"info-nome"));
-    patientTr.appendChild(mountingTd(returnPatient.weight,"info-peso"));
-    patientTr.appendChild(mountingTd(returnPatient.height,"info-altura"));
-    patientTr.appendChild(mountingTd(returnPatient.fat,"info-gordura"));
-    patientTr.appendChild(mountingTd(returnPatient.imc,"info-imc"));
+    patientTr.appendChild(mountingTd(patient.name,"info-nome"));
+    patientTr.appendChild(mountingTd(patient.weight,"info-peso"));
+    patientTr.appendChild(mountingTd(patient.height,"info-altura"));
+    patientTr.appendChild(mountingTd(patient.fat,"info-gordura"));
+    patientTr.appendChild(mountingTd(patient.imc,"info-imc"));
 
     return patientTr;
 }
@@ -46,4 +53,16 @@ function mountingTd(dado,classe){
     td.classList.add(classe);
 
     return td;
+}
+
+function validPatient(patient){
+    error = [];
+
+    if(!valid__Weight(patient.weight)){
+        error.push("Peso inválido")
+    }
+    if(!valid__Height(patient.height)){
+        error.push("Altura inválida")
+    }
+    return error;
 }

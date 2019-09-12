@@ -4,8 +4,9 @@ table.addEventListener('dblclick',intoEvent)
 
 function intoEvent(event){
     event.target.parentNode.classList.add("fadeOut")
-    setTimeout(function(){
+    setTimeout(removePatient, 1000)
+    function removePatient(){
         event.target.parentNode.remove();
-    }, 1000)
+    }
     
 }

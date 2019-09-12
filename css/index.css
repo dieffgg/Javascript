@@ -135,7 +135,7 @@ button[disabled=disabled], button:disabled {
 .patient__invalid{
 	background-color: lightcoral;
 }
-#message__error{
+#error__messages{
 	background-color: #FFF;
 	color: red;
 }

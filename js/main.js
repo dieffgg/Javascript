@@ -1,20 +1,20 @@
-var titulo = document.querySelector("h1");
+const titulo = document.querySelector("h1");
 titulo.textContent = "Gabriela Nutricionista";
 
-var patients = document.querySelectorAll(".patient");
-for (var i = 0; i < patients.length; i++){
-        var patient = patients[i];
+const patients = document.querySelectorAll(".patient");
+for (let i = 0; i < patients.length; i++){
+        const patient = patients[i];
 
-        var tdWeight =  patient.querySelector(".info-peso");
-        var weight = tdWeight.textContent;
+        const tdWeight =  patient.querySelector(".info-peso");
+        const weight = tdWeight.textContent;
 
-        var tdHeight = patient.querySelector(".info-altura");
-        var height = tdHeight.textContent;
+        const tdHeight = patient.querySelector(".info-altura");
+        const height = tdHeight.textContent;
 
-        var tdImc = patient.querySelector(".info-imc");
+        const tdImc = patient.querySelector(".info-imc");
 
-        var validWeight = valid__Weight(weight);
-        var validHeight = valid__Height(height);
+        let validWeight = valid__Weight(weight);
+        let validHeight = valid__Height(height);
 
         if(!validWeight){
             console.log("Peso Inválido");
@@ -30,14 +30,14 @@ for (var i = 0; i < patients.length; i++){
         }
 
         if (validHeight && validWeight){
-            var imc = calculateImc(weight,height);
+            const imc = calculateImc(weight,height);
             tdImc.textContent = imc;
         }
         
     }
 
 function calculateImc(weight,height){
-    var imc = 0;
+    let imc = 0;
 
     imc = weight / (height*height);
 

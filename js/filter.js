@@ -10,8 +10,9 @@ function filterPatient() {
             const patient = patients[i];
             const tdName = patient.querySelector('.info-nome')
             const name = tdName.textContent
+            const regex = new RegExp(this.value,'i')
             console.log(name);
-            if (name != this.value) {
+            if (!regex.test(name)) {
                 patient.classList.add('invisible')
             }else{
                 patient.classList.remove('invisible')

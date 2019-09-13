@@ -9,7 +9,13 @@ function requestResponse1(){
 
     xhr.open('GET', "https://api-pacientes.herokuapp.com/pacientes")
     xhr.addEventListener('load', function(){
-        console.log(xhr.responseText);  
+        const response = xhr.responseText
+        const patients = JSON.parse(response)
+        console.log(patients);
+
+        patients.forEach(patient => {
+            addPatientJSON(patient);
+        });
     })
     xhr.send();
 }

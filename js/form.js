@@ -7,22 +7,32 @@ function insertButton(event) {
     const form = document.querySelector("#form__add");
     const patient = extractingForm(form);
 
-    const patientTr = mountingTr(patient);
-
     const error = validPatient(patient);
     console.log(error);
     if (error.length > 0) {
         errorMessage(error);
         return;
     }
-    //Adicionando o Paciente na tabela
-    const table = document.querySelector("#patient__table");
-    table.appendChild(patientTr);
+    addPatient(patient)
 
     form.reset();
     const errorMessage1 = document.querySelector("#error__messages");
     errorMessage1.innerHTML = "";
 }
+function addPatient(patient) {
+    const patientTr = mountingTr(patient);
+    //Adicionando o Paciente na tabela
+    const table = document.querySelector("#patient__table");
+    table.appendChild(patientTr);
+}
+
+function addPatientJSON(patient) {
+    const patientTr = mountingTrJSON(patient);
+    //Adicionando o Paciente na tabela
+    const table = document.querySelector("#patient__table");
+    table.appendChild(patientTr);
+}
+
 //Extraindo informações do paciente do form e criando um objeto 
 function extractingForm(form) {
     const patient = {
@@ -43,6 +53,19 @@ function mountingTr(patient) {
     patientTr.appendChild(mountingTd(patient.weight, "info-peso"));
     patientTr.appendChild(mountingTd(patient.height, "info-altura"));
     patientTr.appendChild(mountingTd(patient.fat, "info-gordura"));
+    patientTr.appendChild(mountingTd(patient.imc, "info-imc"));
+
+    return patientTr;
+}
+
+function mountingTrJSON(patient) {
+    const patientTr = document.createElement("tr");
+    patientTr.classList.add("patient");
+
+    patientTr.appendChild(mountingTd(patient.nome, "info-nome"));
+    patientTr.appendChild(mountingTd(patient.peso, "info-peso"));
+    patientTr.appendChild(mountingTd(patient.altura, "info-altura"));
+    patientTr.appendChild(mountingTd(patient.gordura, "info-gordura"));
     patientTr.appendChild(mountingTd(patient.imc, "info-imc"));
 
     return patientTr;
